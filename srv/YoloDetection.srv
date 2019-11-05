@@ -1,0 +1,7 @@
+#std_msgs/Header header
+sensor_msgs/Image ImageQuery # e.g. for the yolo detection
+#sensor_msgs/Image image
+---
+bool success   # indicate successful run of triggered service
+yolo_detector/BoundingBox BoundingBoxAnswer
+
