@@ -1,0 +1,7 @@
+#sensor_msgs/Image image_tmp
+bool data # e.g. for hardware enabling / disabling
+---
+bool success   # indicate successful run of triggered service
+yolo_detector/BoundingBox bounding_box_tmp
+
+
