@@ -1,0 +1,6 @@
+<launch>
+  <arg name="task"/>
+  <node name="hog" pkg="robot" type="hog" output="screen">
+    <param name="task" value="$(arg task)" />
+  </node>
+</launch>

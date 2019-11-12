@@ -1,0 +1,48 @@
+Instructions for running the control node with the robot.
+
+
+//Image processing
+//terminal 1:
+cd ~/detect_piece/pose_estimation/pose/server
+python server.py
+
+//terminal 2:
+cd ~/detect_piece/pose_estimation/occlusion_big/server
+python server.py
+
+
+//ROS behaviour node:
+//Launch driver for the real robot
+cd ~/catkin_ws/src/robot/launch/
+roslaunch ur_modern_driver ur10_bringup_joint_limited.launch robot_ip:=192.168.1.201
+
+//Bring up planning
+cd ~/catkin_ws/src/robot/launch/
+roslaunch real_ur10_moveit_planning_execution.launch 
+
+//Launch planning visualization
+roslaunch moveit_rviz.launch 
+ 
+//Launch node controlling the robot - main
+roslaunch ur_sim.launch task:=grasping pn:=false 
+roslaunch ur_sim.launch task:=make_data pn:=false
+
+//Launch gui control
+go to binpicking-gui/build/
+./gui
+
+GIT:
+ssh-add ~/.ssh_robot/id_rsa_robot
+
+
+
+//Robot settings
+IP:
+192.168.0.3
+Mask:
+255.255.255.0
+Default Gateway:
+192.168.0.3
+
+DNS
+0.0.0.0

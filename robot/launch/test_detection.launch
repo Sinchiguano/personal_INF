@@ -1,0 +1,5 @@
+<launch>
+
+  <node name="test_detection" pkg="robot" type="test_detection" output="screen">
+  </node>
+</launch>

@@ -1,0 +1,21 @@
+syntax = "proto2";
+package skoda_msgs.msgs;
+
+/// \ingroup skoda.msgs
+/// \interface CommandMsg
+/// \brief A message for commands from GUI/Core (id, status)
+
+import "ignition/msgs/header.proto";
+
+message CommandMsg
+{
+  enum Command {
+    DUMMY = 0; SOFT_START = 2; SOFT_STOP = 3;
+  }
+  /// \brief Optional header data
+  optional ignition.msgs.Header header = 1;
+
+  optional int64 id = 2;
+  optional Command command = 3;
+  optional string msg = 4;
+}

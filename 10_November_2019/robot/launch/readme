@@ -1,0 +1,11 @@
+//First launch the simulator, planner and rviz visualization each in it`s own terminal
+roslaunch ur10.launch
+roslaunch ur10_moveit_planning_execution.launch
+roslaunch moveit_rviz.launch
+
+//Then launch the ur_sim node
+roslaunch ur_sim.launch
+
+
+
+//You can write a bash script for delayed launching of the files, but the ur10.launch often fails, so I wouldn`t recommend it.

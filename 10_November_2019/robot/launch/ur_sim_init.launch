@@ -1,0 +1,7 @@
+<launch>
+
+  <node name="behave" pkg="robot" type="behave" output="screen">
+    <param name="task" value="init" />
+    <param name="pn"   value="false" />
+  </node>
+</launch>

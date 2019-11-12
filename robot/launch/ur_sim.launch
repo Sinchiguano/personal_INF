@@ -1,0 +1,9 @@
+<launch>
+
+  <arg name="task"/>
+  <arg name="pn"/>
+  <node name="behave" pkg="robot" type="behave" output="screen">
+    <param name="task" value="make_data" />
+    <param name="pn"   value="false" />
+  </node>
+</launch>

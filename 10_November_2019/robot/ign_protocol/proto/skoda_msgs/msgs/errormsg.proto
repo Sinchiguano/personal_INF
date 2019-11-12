@@ -1,0 +1,27 @@
+syntax = "proto2";
+package skoda_msgs.msgs;
+
+/// \ingroup skoda.msgs
+/// \interface ErrorMsg
+/// \brief A message for log data (id, msg)
+
+import "ignition/msgs/header.proto";
+
+message ErrorMsg
+{
+  /// \brief Optional header data
+  optional ignition.msgs.Header header = 1;
+
+  enum Error_id {
+    
+    OK = 0; GRASPING = 1; DROPPED = 2; ATTACHED = 3; DROPPED_ITEM = 4;
+    //Rosout msgs
+    FTRCJS = 10; PROTECTIVE_STOP = 11; 
+    //other msgs
+    TIME_BOMB = 20; JOINTS_OUT_OF_RANGE = 21;
+
+  }
+  optional Error_id id = 2 [default = OK];
+
+  optional string msg = 3;
+}

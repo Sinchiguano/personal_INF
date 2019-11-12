@@ -1,0 +1,56 @@
+syntax = "proto2";
+package skoda_msgs.msgs;
+
+/// \ingroup skoda.msgs
+/// \interface StatusMsg
+/// \brief A message for status of components (id, status)
+
+import "ignition/msgs/header.proto";
+
+
+message StatusMsg
+{
+  enum Component {
+  DUMMY = 0; LIGHT = 1; AIR = 2; ATTACHED = 3; 
+  //Heartbeat for individual programs
+  BEHAVE = 10; GUI = 11; LOG = 12;
+  //PN/GUI enable robot
+  ROBOT_ENABLED = 20;
+  }
+  /// \brief Optional header data
+  optional ignition.msgs.Header header = 1;
+
+  optional Component id = 2 [default = DUMMY];
+  optional int64 status = 3;
+}
+
+
+/// \ingroup skoda.msgs
+/// \interface InfoMsg
+/// \brief A message for informative data (type, msg)
+
+message InfoMsg
+{
+
+  enum Info_id {
+    DUMMY = 0; 
+    //ROS State machine
+    SOFT_STOP = 1; HOME = 2; MAKE_INIT = 3; APPROACH = 4; GRASPING = 5; PUTTING = 6; WAITING_AT_HOME = 7; LEAVING_HOME = 8;
+    //ROBOT info
+    ROBOT_OK = 10; ROBOT_ERROR = 11; 
+    //BOX info
+    EMPTY_BOX = 20; BOX_LOW = 21; FULL_BOX = 22; ONE_MORE_ITEM = 23; FEEDER_FULL = 24;
+    //Other
+    }
+  enum Info_type {
+    T_DUMMY = 0; T_OPERATION = 1; T_ROBOT_STATUS = 2;
+     T_BOX_STATUS = 3; T_INFO = 4; T_SILENT = 5;
+     }
+
+  /// \brief Optional header data
+  optional ignition.msgs.Header header = 1;
+
+  optional Info_id id = 2;
+  optional Info_type type = 3;
+  optional string msg = 4;
+}
